@@ -9,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t 2330_ISA2 .'
+                    bat 'docker build -t vinayyy/2330_ISA2 .'
                 }
             }
         }
