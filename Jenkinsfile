@@ -1,4 +1,3 @@
-// Jenkinsfile
 pipeline {
     agent any
     stages {
@@ -10,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("2330_ISA2")
+                    bat 'docker build -t 2330_ISA2 .'
                 }
             }
         }
@@ -18,11 +17,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'docker rm -f 2330'
+                        bat 'docker rm -f 2330'
                     } catch (Exception e) {
                         echo "No existing container to remove"
                     }
-                    sh 'docker run -d --name 2330 2330_ISA2'
+                    bat 'docker run -d --name 2330 vinayyy/2330_ISA2'
                 }
             }
         }
